@@ -1,20 +1,158 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <br />
+  <h1>Angular Pipes</h1>
+  <hr />
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Variable</th>
+        <th scope="col">Pipe</th>
+        <th scope="col">Producto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ name }}</td>
+        <td>uppercase</td>
+        <td>{{ name | uppercase }}</td>
+      </tr>
+      <tr>
+        <td>{{ name }}</td>
+        <td>lowercase</td>
+        <td>{{ name | lowercase }}</td>
+      </tr>
+      <tr>
+        <td>{{ name }}</td>
+        <td>slice:3</td>
+        <td>{{ name | slice: 3 }}</td>
+      </tr>
+      <tr>
+        <td>{{ name }}</td>
+        <td>slice:0:3</td>
+        <td>{{ name | slice: 0:3 }}</td>
+      </tr>
+      <tr>
+        <td>{{ numberArray }}</td>
+        <td>slice:1:5</td>
+        <td>{{ numberArray | slice: 1:5 }}</td>
+      </tr>
+      <tr>
+        <td>{{ PI }}</td>
+        <td>number</td>
+        <td>{{ PI | number }}</td>
+      </tr>
+      <tr>
+        <td>{{ PI }}</td>
+        <td>number: "3.0-0"</td>
+        <td>{{ PI | number: "3.0-0" }}</td>
+      </tr>
+      <tr>
+        <td>{{ PI }}</td>
+        <td>number: "1.0-2"</td>
+        <td>{{ PI | number: "1.0-2" }}</td>
+      </tr>
+      <tr>
+        <td>{{ numberPercent }}</td>
+        <td>percent</td>
+        <td>{{ numberPercent | percent }}</td>
+      </tr>
+      <tr>
+        <td>{{ numberPercent }}</td>
+        <td>percent: "2.2-2"</td>
+        <td>{{ numberPercent | percent: "2.2-2" }}</td>
+      </tr>
+      <tr>
+        <td>{{ salary }}</td>
+        <td>currency</td>
+        <td>{{ salary | currency }}</td>
+      </tr>
+      <tr>
+        <td>{{ salary }}</td>
+        <td>currency: "COP"</td>
+        <td>{{ salary | currency: "COP" }}</td>
+      </tr>
+      <tr>
+        <td>{{ salary }}</td>
+        <td>currency: "COP":"symbol-narrow"</td>
+        <td>{{ salary | currency: "COP":"symbol-narrow" }}</td>
+      </tr>
+      <tr>
+        <td>{{ salary }}</td>
+        <td>currency: "COP":"symbol-narrow":"4.0-2"</td>
+        <td>{{ salary | currency: "COP":"symbol-narrow":"4.0-2" }}</td>
+      </tr>
+      <tr>
+        <td>{{ salary }}</td>
+        <td>number: ".2-2"</td>
+        <td>{{ salary | number: ".2-2" }}</td>
+      </tr>
+      <tr>
+        <td>{{ valuePromise }}</td>
+        <td>async</td>
+        <td>{{ valuePromise | async }}</td>
+      </tr>
+      <tr>
+        <td>{{ currentDate }}</td>
+        <td>date</td>
+        <td>{{ currentDate | date }}</td>
+      </tr>
+      <tr>
+        <td>{{ currentDate }}</td>
+        <td>date: "medium"</td>
+        <td>{{ currentDate | date: "medium" }}</td>
+      </tr>
+      <tr>
+        <td>{{ currentDate }}</td>
+        <td>date: "MMMM - dd"</td>
+        <td>{{ currentDate | date: "MMMM - dd" }}</td>
+      </tr>
+      <tr>
+        <td>{{ fullName }}</td>
+        <td>capitalize</td>
+        <td>{{ fullName | capitalize }}</td>
+      </tr>
+      <tr>
+        <td>{{ fullName }}</td>
+        <td>capitalize: false</td>
+        <td>{{ fullName | capitalize: false }}</td>
+      </tr>
+      <tr>
+        <td>{{ title }}</td>
+        <td>
+          password: {{ passwordActivate }}
+          <br />
+          <button
+            (click)="passwordActivate = !passwordActivate"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Activar/Desactivar
+          </button>
+        </td>
+        <td>{{ title | password: passwordActivate }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <h4>Slice {{ numberArray }}: 5:20</h4>
+  <hr />
+  <ul>
+    <li *ngFor="let number of numberArray | slice: 5:20">{{ number }}</li>
+  </ul>
+  <hr />
+  <h4>JSON {{ heroe }}</h4>
+  <hr />
+  <pre>
+      {{ heroe | json }}
+  </pre>
+  <h4>Youtube {{ videoYoutube }}</h4>
+  <hr />
+  <iframe
+    width="560"
+    height="315"
+    [src]="videoYoutube | domsecure: 'https://www.youtube.com/embed/'"
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
